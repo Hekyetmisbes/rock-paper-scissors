@@ -164,7 +164,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 2
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_BackGroundColor: {r: 0.05783193, g: 0.2444612, b: 0.5377358, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -235,6 +235,9 @@ MonoBehaviour:
   prefabRock: {fileID: 8152518876854257178, guid: 88340e347e82dc44686c0171dcb364e0, type: 3}
   prefabPaper: {fileID: 3786650733652451987, guid: 793757ad696a91b448fc0aa15b332aa9, type: 3}
   prefabScissors: {fileID: 3277546934959374488, guid: 70e9101b98d5a054281278efa8729762, type: 3}
+  rockCount: 0
+  paperCount: 0
+  scissorsCount: 0
 --- !u!68 &519420034
 EdgeCollider2D:
   m_ObjectHideFlags: 0

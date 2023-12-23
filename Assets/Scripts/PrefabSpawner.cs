@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using UnityEditor.SearchService;
 using UnityEngine;
 
 public class PrefabSpawner : MonoBehaviour
@@ -15,6 +16,61 @@ public class PrefabSpawner : MonoBehaviour
     const float MinSpawnDelay = 0;
     const float MaxSpawnDelay = 1;
     Timer spawnTimer;
+
+    
+    private int rockCount = 0;
+    private int paperCount = 0;
+    private int scissorsCount = 0;
+
+    
+    public int GetScissorsCount()
+    {
+        return scissorsCount;
+    }
+    public void SetScissorsCount(int value)
+    {
+        scissorsCount = value;
+    }
+    public int GetRockCount()
+    {
+        return rockCount;
+    }
+    public void SetRockCount(int value)
+    {
+        rockCount = value;
+    }
+    public int GetPaperCount()
+    {
+        return paperCount;
+    }
+    public void SetPaperCount(int value)
+    {
+        paperCount = value;
+    }
+
+    /*public int RockCount
+    {
+        get
+        {
+            return rockCount;
+        }
+        set
+        {
+            rockCount = value;
+        }
+    }
+
+    public int PaperCount
+    {
+        get
+        {
+            return paperCount;
+        }
+        set
+        {
+            paperCount = value;
+        }
+    }*/
 
     const int SpawnBorderSize = 100;
     int minSpawnX;
@@ -48,6 +104,21 @@ public class PrefabSpawner : MonoBehaviour
             spawnTimer.Duration = Random.Range(MinSpawnDelay, MaxSpawnDelay);
             spawnTimer.Run();
         }
+        else
+        {
+            if (scissorsCount == 20)
+            {
+                Debug.Log("Kaya");
+            }
+            if (rockCount == 20)
+            {
+                Debug.Log("Paper");
+            }
+            if (paperCount == 20)
+            {
+                Debug.Log("Makas");
+            }
+        }
     }
 
     void SpawnPrefabs()
@@ -64,19 +135,25 @@ public class PrefabSpawner : MonoBehaviour
         {
             prefabs = Instantiate<GameObject>(prefabRock,
                 worldLocation, Quaternion.identity); ;
+            Debug.Log("Rock Count: " + rockCount);
             prefabCount++;
+            rockCount++;
         }
         else if (spriteNumber == 1)
         {
             prefabs = Instantiate<GameObject>(prefabPaper,
                 worldLocation, Quaternion.identity); ;
+            Debug.Log("Paper Count: " + paperCount);
             prefabCount++;
+            paperCount++;
         }
         else
         {
             prefabs = Instantiate<GameObject>(prefabScissors,
                 worldLocation, Quaternion.identity); ;
+            Debug.Log("Scissors Count: " + scissorsCount);
             prefabCount++;
+            scissorsCount++;
         }
     }
 }
