@@ -88,19 +88,19 @@ public class PrefabSpawner : MonoBehaviour
         }
 
         // Kazananý belirle
-        if (rockCount + scissorsCount == 20)
+        if (rockCount + scissorsCount == 20 && paperCount == 0)
         {
             Time.timeScale = 0f;
             restartButton.gameObject.SetActive(true);
             winText.text = "Rock win!";
         }
-        else if (paperCount + rockCount == 20)
+        else if (paperCount + rockCount == 20 && scissorsCount == 0)
         {
             Time.timeScale = 0f;
             restartButton.gameObject.SetActive(true);
             winText.text = "Paper win!";
         }
-        else if (scissorsCount + paperCount == 20)
+        else if (scissorsCount + paperCount == 20 && rockCount == 0)
         {
             Time.timeScale = 0f;
             restartButton.gameObject.SetActive(true);
