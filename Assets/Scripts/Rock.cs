@@ -17,6 +17,7 @@ public class Rock : MonoBehaviour
         GetComponent<Rigidbody2D>().AddForce(direction * magnitude, ForceMode2D.Impulse);
     }
 
+    // Check for collision with paper
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("Paper"))

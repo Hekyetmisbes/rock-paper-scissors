@@ -5,11 +5,12 @@ using UnityEngine.UI;
 
 public class PrefabSpawner : MonoBehaviour
 {
+    // Define prefabs array and other variables
     [SerializeField]
+    GameObject[] prefabsArray = new GameObject[3];
+    
     GameObject prefabRock;
-    [SerializeField]
     GameObject prefabPaper;
-    [SerializeField]
     GameObject prefabScissors;
 
     [SerializeField]
@@ -51,7 +52,7 @@ public class PrefabSpawner : MonoBehaviour
         {
             SpawnPrefabs();
 
-            // change spawn timer duration and restart
+            // Change spawn timer duration and restart
             spawnTimer.Duration = Random.Range(MinSpawnDelay, MaxSpawnDelay);
             spawnTimer.Run();
         }
@@ -60,6 +61,7 @@ public class PrefabSpawner : MonoBehaviour
 
     void CheckWinner()
     {
+        // Count the number of each type of prefab
         int rockCount = 0;
         int paperCount = 0;
         int scissorsCount = 0;
@@ -68,7 +70,6 @@ public class PrefabSpawner : MonoBehaviour
         GameObject[] paperPrefabs = GameObject.FindGameObjectsWithTag("Paper");
         GameObject[] scissorsPrefabs = GameObject.FindGameObjectsWithTag("Scissors");
 
-        // Þimdi bu dizileri birleþtirin
         GameObject[] allPrefabs = rockPrefabs.Concat(paperPrefabs).Concat(scissorsPrefabs).ToArray();
 
         foreach (GameObject prefab in allPrefabs)
@@ -87,7 +88,7 @@ public class PrefabSpawner : MonoBehaviour
             }
         }
 
-        // Kazananý belirle
+        // Determine the winner
         if (rockCount + scissorsCount == 20 && paperCount == 0)
         {
             Time.timeScale = 0f;
@@ -110,31 +111,15 @@ public class PrefabSpawner : MonoBehaviour
 
     void SpawnPrefabs()
     {
-        // generate random location and create new teddy bear
+        // Generate random location and create rock, paper and scissors
         Vector3 location = new Vector3(Random.Range(minSpawnX, maxSpawnX),
             Random.Range(minSpawnY, maxSpawnY),
             -Camera.main.transform.position.z);
         Vector3 worldLocation = Camera.main.ScreenToWorldPoint(location);
 
         GameObject prefabs;
-        int spriteNumber = Random.Range(0, 3);
-        if (spriteNumber == 0)
-        {
-            prefabs = Instantiate<GameObject>(prefabRock,
-                worldLocation, Quaternion.identity); ;
-            prefabCount++;
-        }
-        else if (spriteNumber == 1)
-        {
-            prefabs = Instantiate<GameObject>(prefabPaper,
-                worldLocation, Quaternion.identity); ;
-            prefabCount++;
-        }
-        else
-        {
-            prefabs = Instantiate<GameObject>(prefabScissors,
-                worldLocation, Quaternion.identity); ;
-            prefabCount++;
-        }
+        prefabs = Instantiate<GameObject>(prefabsArray[Random.Range(0, 3)],
+            worldLocation, Quaternion.identity); ;
+        prefabCount++;
     }
 }

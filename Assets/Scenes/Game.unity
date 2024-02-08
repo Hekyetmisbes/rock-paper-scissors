@@ -364,9 +364,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 687936ccad6d4f743a0a6f806a4c71ac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  prefabRock: {fileID: 8152518876854257178, guid: 88340e347e82dc44686c0171dcb364e0, type: 3}
-  prefabPaper: {fileID: 3786650733652451987, guid: 793757ad696a91b448fc0aa15b332aa9, type: 3}
-  prefabScissors: {fileID: 3277546934959374488, guid: 70e9101b98d5a054281278efa8729762, type: 3}
+  prefabsArray:
+  - {fileID: 8152518876854257178, guid: 88340e347e82dc44686c0171dcb364e0, type: 3}
+  - {fileID: 3786650733652451987, guid: 793757ad696a91b448fc0aa15b332aa9, type: 3}
+  - {fileID: 3277546934959374488, guid: 70e9101b98d5a054281278efa8729762, type: 3}
   winText: {fileID: 2093592026}
   restartButton: {fileID: 472030767}
 --- !u!68 &519420034
